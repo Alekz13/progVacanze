@@ -63,7 +63,7 @@ public class PrenotazioneService {
 	}
 
 	public Prenotazione modificaPrenotazione(Prenotazione pren, Long id) {
-		Optional<Prenotazione> prenotazione = prenotazioneRepository.findById(id);
+		Optional<Prenotazione> prenotazione = this.prenotazioneRepository.findById(id);
 			if(prenotazione.isPresent()){
 			Prenotazione pr = prenotazione.get();
 			pr.setConvalida(pren.isConvalida());
@@ -76,5 +76,8 @@ public class PrenotazioneService {
 			return pr;
 		}
 		return null;
+	}
+	public void convalidaPrenotazione(Prenotazione p) {
+		p.setConvalida(true);
 	}
 }

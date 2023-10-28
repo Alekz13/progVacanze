@@ -56,4 +56,9 @@ public class PrenotazioneController {
     public Prenotazione modifiPrenotazione(@RequestBody Prenotazione pr, Long id){
        return this.prenotazioneService.modificaPrenotazione(pr, id);
     } 
+    @PutMapping
+    public String convalidaPrenotazione(@RequestBody Prenotazione p) {
+    	this.prenotazioneService.convalidaPrenotazione(p);
+    	return "Prenotazione convalidata!";
+    }
 }

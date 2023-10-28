@@ -28,17 +28,27 @@ private Pacchetto pacchetto;
 private boolean convalida = false;
 private double prezzoFinale;
 private LocalDate giornoPrenotazione;
+private boolean assicurazione;
 
 public Prenotazione() {
 }
 
-public Prenotazione(int numPartecipanti, Utente utente, Pacchetto pacchetto, boolean convalida, double prezzoFinale, LocalDate giornoPrenotazione) {
+public Prenotazione(int numPartecipanti, Utente utente, Pacchetto pacchetto, boolean convalida, double prezzoFinale, LocalDate giornoPrenotazione, boolean assicurazione) {
 	this.numPartecipanti = numPartecipanti;
 	this.utente = utente;
 	this.pacchetto = pacchetto;
 	this.convalida = convalida;
 	this.prezzoFinale = pacchetto.getCosto()*numPartecipanti;
 	this.giornoPrenotazione = giornoPrenotazione;
+	this.assicurazione = assicurazione;
+}
+
+public boolean isAssicurazione() {
+	return assicurazione;
+}
+
+public void setAssicurazione(boolean assicurazione) {
+	this.assicurazione = assicurazione;
 }
 
 public LocalDate getGiornoPrenotazione() {
@@ -132,10 +142,13 @@ public boolean equals(Object obj) {
 	return true;
 }
 
+
+
 @Override
 public String toString() {
 	return "Prenotazione [id=" + id + ", numPartecipanti=" + numPartecipanti + ", utente=" + utente + ", pacchetto="
-			+ pacchetto + ", convalida=" + convalida + ", prezzoFinale=" + prezzoFinale + "]";
+			+ pacchetto + ", convalida=" + convalida + ", prezzoFinale=" + prezzoFinale + ", giornoPrenotazione="
+			+ giornoPrenotazione + ", assicurazione=" + assicurazione + "]";
 }
 
 public void calcolaPrezzo() {
