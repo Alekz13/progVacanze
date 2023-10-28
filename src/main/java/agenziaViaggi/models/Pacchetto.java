@@ -45,6 +45,10 @@ public class Pacchetto {
 		this.meta = meta;
 		this.img = img;
 	}
+	
+	public void setId(long id) {
+		this.id = id;
+	}
 	public String getNome() {
 		return nome;
 	}

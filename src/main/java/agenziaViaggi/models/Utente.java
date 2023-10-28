@@ -43,6 +43,11 @@ public Utente(String nome, String cognome, String emailAddress, String password,
 	
 }
 
+
+public void setPrenotazioni(List<Prenotazione> prenotazioni) {
+	this.prenotazioni = prenotazioni;
+}
+
 public long getId() {
 	return id;
 }

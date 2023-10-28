@@ -24,6 +24,10 @@ public class Meta {
 	public Meta() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	public void setId(long id) {
+		this.id = id;
+	}
 	public String getCitta() {
 		return citta;
 	}

@@ -1,5 +1,7 @@
 package agenziaViaggi.models;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,16 +27,30 @@ private Utente utente;
 private Pacchetto pacchetto;
 private boolean convalida = false;
 private double prezzoFinale;
+private LocalDate giornoPrenotazione;
 
 public Prenotazione() {
 }
 
-public Prenotazione(int numPartecipanti, Utente utente, Pacchetto pacchetto, boolean convalida, double prezzoFinale) {
+public Prenotazione(int numPartecipanti, Utente utente, Pacchetto pacchetto, boolean convalida, double prezzoFinale, LocalDate giornoPrenotazione) {
 	this.numPartecipanti = numPartecipanti;
 	this.utente = utente;
 	this.pacchetto = pacchetto;
 	this.convalida = convalida;
 	this.prezzoFinale = pacchetto.getCosto()*numPartecipanti;
+	this.giornoPrenotazione = giornoPrenotazione;
+}
+
+public LocalDate getGiornoPrenotazione() {
+	return giornoPrenotazione;
+}
+
+public void setGiornoPrenotazione(LocalDate giornoPrenotazione) {
+	this.giornoPrenotazione = giornoPrenotazione;
+}
+
+public void setId(long id) {
+	this.id = id;
 }
 
 public int getNumPartecipanti() {
