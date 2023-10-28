@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,7 +21,7 @@ import agenziaViaggi.models.Meta;
 
 import agenziaViaggi.services.MetaService;
 
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping ("/mete")
 public class MetaController {
@@ -32,21 +33,15 @@ public class MetaController {
     public List<Meta> findAllMete() {
         return metaService.findAll();
     }
-    @GetMapping("/{citta}")
-    public ResponseEntity<Meta> findMetaByCitta(@PathVariable String citta) {
-    try {
-        Meta meta = metaService.findByCitta(citta);
-        return ResponseEntity.ok(meta);
-    } catch (NumberFormatException e) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-    }
+    @GetMapping("/citta={citta}")
+    public Meta findMetaByCitta(@PathVariable String citta) {
+    return this.metaService.findByCitta(citta);
 }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Meta> findMetaById(@PathVariable String id) {
+    public ResponseEntity<Meta> findMetaById(@PathVariable Long id) {
         try {
-            Long MetaId = Long.parseLong(id);
-            Meta meta = metaService.findById(MetaId);
+            Meta meta = metaService.findById(id);
             return ResponseEntity.ok(meta);
         } catch (NumberFormatException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
