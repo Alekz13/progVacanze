@@ -4,29 +4,34 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class PacchettoDto {
-	
+	private Long id;
 	private String nome, descrizione;
 	private double costo;
 	private int disponibilita;
-	private boolean assicurazione, passaporto, vaccino;
+	private boolean passaporto, vaccino;
 	private LocalDate giornoPartenza, giornoRitorno;
 	private MetaDto meta;
 	public PacchettoDto() {
-		super();
 	}
-	public PacchettoDto(String nome, String descrizione, double costo, int disponibilita, boolean assicurazione,
+	public PacchettoDto(Long id, String nome, String descrizione, double costo, int disponibilita,
 			boolean passaporto, boolean vaccino, LocalDate giornoPartenza, LocalDate giornoRitorno, MetaDto meta) {
-		super();
+		this.id = id;
 		this.nome = nome;
 		this.descrizione = descrizione;
 		this.costo = costo;
 		this.disponibilita = disponibilita;
-		this.assicurazione = assicurazione;
 		this.passaporto = passaporto;
 		this.vaccino = vaccino;
 		this.giornoPartenza = giornoPartenza;
 		this.giornoRitorno = giornoRitorno;
 		this.meta = meta;
+	}
+	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
 	}
 	public String getNome() {
 		return nome;
@@ -52,12 +57,7 @@ public class PacchettoDto {
 	public void setDisponibilita(int disponibilita) {
 		this.disponibilita = disponibilita;
 	}
-	public boolean isAssicurazione() {
-		return assicurazione;
-	}
-	public void setAssicurazione(boolean assicurazione) {
-		this.assicurazione = assicurazione;
-	}
+	
 	public boolean isPassaporto() {
 		return passaporto;
 	}
@@ -88,9 +88,10 @@ public class PacchettoDto {
 	public void setMeta(MetaDto meta) {
 		this.meta = meta;
 	}
+	
 	@Override
 	public int hashCode() {
-		return Objects.hash(assicurazione, costo, descrizione, disponibilita, giornoPartenza, giornoRitorno, meta, nome,
+		return Objects.hash(costo, descrizione, disponibilita, giornoPartenza, giornoRitorno, id, meta, nome,
 				passaporto, vaccino);
 	}
 	@Override
@@ -102,17 +103,17 @@ public class PacchettoDto {
 		if (getClass() != obj.getClass())
 			return false;
 		PacchettoDto other = (PacchettoDto) obj;
-		return assicurazione == other.assicurazione
-				&& Double.doubleToLongBits(costo) == Double.doubleToLongBits(other.costo)
+		return Double.doubleToLongBits(costo) == Double.doubleToLongBits(other.costo)
 				&& Objects.equals(descrizione, other.descrizione) && disponibilita == other.disponibilita
 				&& Objects.equals(giornoPartenza, other.giornoPartenza)
-				&& Objects.equals(giornoRitorno, other.giornoRitorno) && Objects.equals(meta, other.meta)
-				&& Objects.equals(nome, other.nome) && passaporto == other.passaporto && vaccino == other.vaccino;
+				&& Objects.equals(giornoRitorno, other.giornoRitorno) && Objects.equals(id, other.id)
+				&& Objects.equals(meta, other.meta) && Objects.equals(nome, other.nome)
+				&& passaporto == other.passaporto && vaccino == other.vaccino;
 	}
 	@Override
 	public String toString() {
 		return "PacchettoDto [nome=" + nome + ", descrizione=" + descrizione + ", costo=" + costo + ", disponibilita="
-				+ disponibilita + ", assicurazione=" + assicurazione + ", passaporto=" + passaporto + ", vaccino="
+				+ disponibilita + ", passaporto=" + passaporto + ", vaccino="
 				+ vaccino + ", giornoPartenza=" + giornoPartenza + ", giornoRitorno=" + giornoRitorno + ", meta=" + meta
 				+ "]";
 	}

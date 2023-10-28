@@ -44,6 +44,7 @@ public class PrenotazioneService {
 			p.getUtente().setPromoCounter(0);
 		} else{
 		p.getUtente().prenota();}
+		p.getPacchetto().setDisponibilita(p.getPacchetto().getDisponibilita()-p.getNumPartecipanti());
 		return this.prenotazioneRepository.save(p);
 		}
 

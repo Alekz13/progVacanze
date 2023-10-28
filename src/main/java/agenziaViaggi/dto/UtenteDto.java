@@ -8,6 +8,7 @@ import java.util.Objects;
 import agenziaViaggi.models.Prenotazione;
 
 public class UtenteDto {
+	private Long id;
 	private String nome, cognome, emailAddress, password;
 	private int phoneNumber, promoCounter;
 	private boolean admin, enabled;
@@ -15,9 +16,9 @@ public class UtenteDto {
 	private List<Prenotazione> prenotazioni;
 	public UtenteDto() {
 	}
-	public UtenteDto(String nome, String cognome, String emailAddress, String password, LocalDate dataDiNascita, int phoneNumber,
+	public UtenteDto(Long id, String nome, String cognome, String emailAddress, String password, LocalDate dataDiNascita, int phoneNumber,
 			int promoCounter, boolean admin, boolean enabled) {
-		super();
+		this.id = id;
 		this.nome = nome;
 		this.cognome = cognome;
 		this.emailAddress = emailAddress;
@@ -28,6 +29,16 @@ public class UtenteDto {
 		this.admin = admin;
 		this.enabled = enabled;
 		this.prenotazioni = new ArrayList<Prenotazione>();
+	}
+	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public void setPrenotazioni(List<Prenotazione> prenotazioni) {
+		this.prenotazioni = prenotazioni;
 	}
 	public String getNome() {
 		return nome;

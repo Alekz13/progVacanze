@@ -23,7 +23,7 @@ private Utente utente;
 @ManyToOne
 @JoinColumn(name = "id_pacchetto")
 private Pacchetto pacchetto;
-private boolean convalida;
+private boolean convalida = false;
 private double prezzoFinale;
 
 public Prenotazione() {

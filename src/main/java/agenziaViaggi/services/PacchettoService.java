@@ -50,11 +50,17 @@ public class PacchettoService {
 		Optional<Pacchetto> pacchetto = pacchettoRepository.findById(id);
 			if(pacchetto.isPresent()){
 			Pacchetto p = pacchetto.get();
-			p.setAssicurazione(pack.isAssicurazione());
 			p.setCosto(pack.getCosto());
 			p.setDescrizione(pack.getDescrizione());
 			p.setDisponibilita(pack.getDisponibilita());
 			p.setGiornoPartenza(pack.getGiornoPartenza());
+			p.setGiornoRitorno(pack.getGiornoRitorno());
+			p.setImg(pack.getImg());
+			p.setMeta(pack.getMeta());
+			p.setNome(pack.getNome());
+			p.setPassaporto(pack.isPassaporto());
+			p.setVaccino(pack.isVaccino());
+			
 
 			pacchettoRepository.save(p);
 			

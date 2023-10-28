@@ -22,7 +22,7 @@ import agenziaViaggi.services.MetaService;
 
 
 @RestController
-@RequestMapping ("/Mete")
+@RequestMapping ("/mete")
 public class MetaController {
 
    @Autowired
@@ -32,6 +32,15 @@ public class MetaController {
     public List<Meta> findAllMete() {
         return metaService.findAll();
     }
+    @GetMapping("/{citta}")
+    public ResponseEntity<Meta> findMetaByCitta(@PathVariable String citta) {
+    try {
+        Meta meta = metaService.findByCitta(citta);
+        return ResponseEntity.ok(meta);
+    } catch (NumberFormatException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+    }
+}
 
     @GetMapping("/{id}")
     public ResponseEntity<Meta> findMetaById(@PathVariable String id) {
