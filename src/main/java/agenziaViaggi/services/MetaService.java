@@ -48,6 +48,9 @@ public class MetaService {
     public Meta findByCitta(String citta) {
 			return this.metaRepository.findByCitta(citta);
 	}
+    public Meta findByContinente(String continente) {
+		return this.metaRepository.findByContinente(continente);
+}
 
     public Meta  modificaMeta(Meta met , Long id) {
         Optional<Meta> meta =metaRepository.findById(id);

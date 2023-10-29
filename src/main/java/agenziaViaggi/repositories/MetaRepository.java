@@ -6,4 +6,5 @@ import agenziaViaggi.models.Meta;
 
 public interface MetaRepository extends JpaRepository<Meta, Long> {
 public Meta findByCitta(String citta);
+public Meta findByContinente(String citta);
 }

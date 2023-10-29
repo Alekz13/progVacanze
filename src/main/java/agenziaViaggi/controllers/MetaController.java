@@ -37,6 +37,10 @@ public class MetaController {
     public Meta findMetaByCitta(@PathVariable String citta) {
     return this.metaService.findByCitta(citta);
 }
+    @GetMapping("/continente={continente}")
+    public Meta findMetaByContinente(@PathVariable String continente) {
+    return this.metaService.findByCitta(continente);
+}
 
     @GetMapping("/{id}")
     public ResponseEntity<Meta> findMetaById(@PathVariable Long id) {
