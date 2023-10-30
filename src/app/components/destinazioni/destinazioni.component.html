@@ -1,0 +1,19 @@
+<div class="dest">
+    <div class="box" *ngFor="let i of continenti index as o" [routerLink]="" (click)="pacchettiByContinente(continenti[o].nome)">
+        <div class="img">
+            <video [src]="continenti[o].img" autoplay="true" loop></video>
+        </div>
+        <div class="cont">
+            <h2>{{continenti[o].nome}}</h2>
+        </div>
+    </div>
+        <div class="card" style="background-image: url({{p.img}}); background-size:cover ;" *ngFor="let p of pacchettiContinente" >
+            <a routerLink="/pacchetti/{{p.id}}"><div class="card__content">
+               <p class="card__title">{{p.nome}}</p>
+               <p class="card__meta">{{p.meta.citta}}</p>
+               <p class="card__description">{{p.descrizione | trasforma}}</p>
+               <p class="card__date">Partenza: {{p.giornoPartenza| date: 'd/M/y'}} &emsp; &emsp; &emsp;  Ritorno: {{p.giornoRitorno| date: 'd/M/y'}}</p>
+               <h2 class="card__costo">€{{p.costo}}</h2>
+             </div></a>
+           </div> 
+    </div>

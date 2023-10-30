@@ -1,0 +1,35 @@
+<div style="width: 100%;" *ngIf="!isPacchetto; else pack"><a (click)="nuovoPacchetto()" ><button class="btnAddPack">+</button></a></div>
+<div class="cat">
+    <div class="card" style="background-image: url({{pacchetto.img}}); background-size:cover;" *ngFor="let pacchetto of pacchetti">
+       <a routerLink="/pacchetti/{{pacchetto.id}}"><div class="card__content">
+          <p class="card__title">{{pacchetto.nome}}</p>
+          <p class="card__meta">{{pacchetto.meta.citta}}</p>
+          <p class="card__description">{{pacchetto.descrizione | trasforma}}</p>
+          <p class="card__date">Partenza: {{pacchetto.giornoPartenza | date}} </p>
+          <p class="card__date">Ritorno: {{pacchetto.giornoRitorno | date}}</p>
+          <p style="color: white; font-size: x-large;">€{{pacchetto.costo}}</p>
+        </div></a>
+      </div> 
+      
+</div>
+<ng-template #pack>
+    <div class="infoPack">
+    <h1 style="font-size: 56px;">{{pacchetto.nome}}</h1>
+    <div class="infoImg">
+    <img src="{{pacchetto.img}}" alt="">
+    <div class="form">
+        <form #aggiuntaPrenotazione="ngForm" (ngSubmit)="addPrenotazione()">
+            <label>Numero partecipanti</label>
+            <input type="number" name="numPartecipanti" value="33" [(ngModel)]="numPartecipanti" required min="1" max={{pacchetto.disponibilita}} step="1">
+            <label for="assicurazione">Assicurazione? (pagherai il 5% in più)</label>
+            <input type="checkbox" name="assicurazione" id="assicurazione" [(ngModel)]="assicurazione" required>
+            <br>
+            <h1>€{{calcolaCostoTotale()}}</h1>
+            <button type="submit">Prenota!</button>
+          </form>
+    </div>
+  </div>
+    <p>{{pacchetto.descrizione}}</p>
+    <p>Partenza:{{pacchetto.giornoPartenza}} <br> Ritorno:{{pacchetto.giornoRitorno}}</p>
+  </div>
+  <ng-template>

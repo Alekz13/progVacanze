@@ -1,0 +1,36 @@
+.side{
+    width: 350px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+}
+
+.side ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.side ul li{
+    width: 100%;
+    list-style: none;
+    padding: 10px 0;
+    margin: 80px 0;
+    margin-left: -20px;
+    text-align: center;
+    transition: all 0.4s;
+}
+
+.side ul li:hover{
+    scale: 1.1;
+}
+
+.side ul li a{
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 32px;
+}

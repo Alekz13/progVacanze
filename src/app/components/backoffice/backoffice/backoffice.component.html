@@ -1,0 +1,27 @@
+<div class="form">
+    <form #aggiuntaPacchetti="ngForm" (ngSubmit)="addPacchetto()">
+        <label>Nome Pacchetto</label>
+        <input type="text" name="nome" [(ngModel)]="nome"required>
+        <label>Descrizione minima</label>
+        <textarea type="text" name="descrizione" [(ngModel)]="descrizione" required></textarea>
+        <label for="meta">Meta</label>
+        <select name="meta" id="meta" [(ngModel)]="meta">
+            <option value= {{meta.citta}} *ngFor="let meta of mete" >{{meta.citta}}</option>
+        </select>
+        <label>Costo</label>
+        <input type="number" name="costo" [(ngModel)]="costo" required>
+        <label>Disponibilità</label>
+        <input type="number" name="disponibilita" [(ngModel)]="disponibilita" required>
+        <label for="pass">Passaporto</label>
+        <input type="checkbox" name="passaporto" id="pass" [(ngModel)]="passaporto" required>
+        <label for="vac">Vaccino</label>
+        <input type="checkbox" name="vaccino" id="vac" [(ngModel)]="vaccino" required>
+        <label>Giorno Partenza</label>
+        <input type="date" name="giornoPartenza" [(ngModel)]="giornoPartenza" required>
+        <label>Giorno Ritorno</label>
+        <input type="date" name="giornoRitorno" [(ngModel)]="giornoRitorno" required>
+        <label>Immagine</label>
+        <input type="text" name="img" [(ngModel)]="img">
+        <button type="submit">Aggiungi</button>
+    </form>
+</div>

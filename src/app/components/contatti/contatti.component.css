@@ -1,0 +1,34 @@
+.info{
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.info .map{
+    margin: 80px;
+    margin-right: 150px;
+}
+
+.info .maps{
+    border: 1px solid gray;
+    border-radius: 20px;
+}
+
+.info .cont{
+    margin: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.info .cont .social{
+    margin: 50px;
+}
+
+.info .cont .social svg{
+    margin: 10px;
+    font-size: 24px;
+    color: #000;
+}
