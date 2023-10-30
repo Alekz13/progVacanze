@@ -11,10 +11,11 @@ public class PacchettoDto {
 	private boolean passaporto, vaccino;
 	private LocalDate giornoPartenza, giornoRitorno;
 	private MetaDto meta;
+	private String img;
 	public PacchettoDto() {
 	}
 	public PacchettoDto(Long id, String nome, String descrizione, double costo, int disponibilita,
-			boolean passaporto, boolean vaccino, LocalDate giornoPartenza, LocalDate giornoRitorno, MetaDto meta) {
+			boolean passaporto, boolean vaccino, LocalDate giornoPartenza, LocalDate giornoRitorno, MetaDto meta, String img) {
 		this.id = id;
 		this.nome = nome;
 		this.descrizione = descrizione;
@@ -25,8 +26,15 @@ public class PacchettoDto {
 		this.giornoPartenza = giornoPartenza;
 		this.giornoRitorno = giornoRitorno;
 		this.meta = meta;
+		this.img= img;
 	}
 	
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
+	}
 	public Long getId() {
 		return id;
 	}
