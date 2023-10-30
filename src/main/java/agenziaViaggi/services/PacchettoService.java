@@ -26,6 +26,15 @@ public class PacchettoService {
 		return this.pacchettoRepository.findById(id).orElseThrow(() -> new
 		ResponseStatusException(HttpStatus.NOT_FOUND));
 		}
+	public List<Pacchetto> findByContinente(String continente){
+		List<Pacchetto> pacchetti= this.pacchettoRepository.findAll();
+		for(Pacchetto p : pacchetti) {
+			if(p.getMeta().getContinente()== continente) {
+				pacchetti.add(p);
+			}
+		} return pacchetti;
+		
+	}
 	
 	public Pacchetto create(PacchettoDto dto) {
 		modelMapper.getConfiguration()

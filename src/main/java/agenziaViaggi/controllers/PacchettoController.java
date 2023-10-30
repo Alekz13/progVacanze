@@ -42,6 +42,11 @@ public class PacchettoController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
+    
+    @GetMapping("/continente={continente}")
+    public List<Pacchetto> findPacchettoByContinente(@PathVariable String continente) {
+    		return this.pacchettoService.findByContinente(continente);
+    }
     @PostMapping
     public Pacchetto nuovoPacchetto(@RequestBody PacchettoDto dto){
         return this.pacchettoService.create(dto);
