@@ -87,7 +87,9 @@ public String getPassword() {
 public void changePassword(String password) {
 	this.password = password;
 }
-
+public void setPassword(String password) {
+	this.password = password;
+}
 public LocalDate getDataDiNascita() {
 	return dataDiNascita;
 }
