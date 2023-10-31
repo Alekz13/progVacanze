@@ -23,6 +23,8 @@ public class PrenotazioneService {
 	@Autowired
 	public PrenotazioneRepository prenotazioneRepository;
 	@Autowired
+	public PacchettoService pacchettoService;
+	@Autowired
 	public ModelMapper modelMapper;
 
 	// PropertyMapper map = PropertyMapper.get();
@@ -39,12 +41,15 @@ public class PrenotazioneService {
 		.setMatchingStrategy(MatchingStrategies.LOOSE);
 		Prenotazione p = new Prenotazione();
 		p = modelMapper.map(dto, Prenotazione.class);
+		p.setPrezzoFinale((p.getPacchetto().getCosto())*p.getNumPartecipanti());
 		if(p.getUtente().getPromoCounter() == 10){
 			p.setPrezzoFinale(p.getPrezzoFinale()-p.getUtente().calcolaPromo());
 			p.getUtente().setPromoCounter(0);
-		} else{
+		} else{	
 		p.getUtente().prenota();}
-		p.getPacchetto().setDisponibilita(p.getPacchetto().getDisponibilita()-p.getNumPartecipanti());
+		Pacchetto pacchettoModificato = p.getPacchetto();
+		pacchettoModificato.setDisponibilita(pacchettoModificato.getDisponibilita()-p.getNumPartecipanti());
+		this.pacchettoService.modificaPachetto(pacchettoModificato, p.getPacchetto().getId());
 		return this.prenotazioneRepository.save(p);
 		}
 

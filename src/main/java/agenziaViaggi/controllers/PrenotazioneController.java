@@ -41,7 +41,7 @@ public class PrenotazioneController {
         return prenotazioneService.findByUtente(utenteService.findByEmail(email));
 	}
 
-	  @PostMapping
+	  @PostMapping("/nuova")
     public Prenotazione nuovaPrenotazione(@RequestBody PrenotazioneDto dto){
         return this.prenotazioneService.create(dto);
     }

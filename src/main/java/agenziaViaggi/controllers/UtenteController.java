@@ -41,7 +41,7 @@ public class UtenteController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
-    @PostMapping
+    @PostMapping("/nuovo")
     public Utente nuovoUtente(@RequestBody UtenteDto dto){
         return this.utenteService.create(dto);
     }
